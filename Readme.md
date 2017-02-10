@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Георгий Гербст](https://up.htmlacademy.ru/javascript/8/user/63231).
-* Наставник: `Неизвестно`.
+* Наставник: [Антон Попов] (https://up.htmlacademy.ru/javascript/8/user/78239).
 
 ---
 
