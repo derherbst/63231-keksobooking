@@ -23,9 +23,9 @@ var closeDialog = function () {
 };
 
 // обработчик события по клику на пин
-var togglePin = function () {
+var togglePin = function (event) {
   removeActive();
-  this.classList.add('pin--active');
+  event.target.classList.add('pin--active');
   dialogWindow.style.display = 'block';
 };
 
