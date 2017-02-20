@@ -1,6 +1,6 @@
 'use strict';
 
-var pin = document.querySelectorAll('.pin');
+// var pin = document.querySelectorAll('.pin');
 var pinMap = document.querySelector('.tokyo__pin-map');
 var dialogWindow = document.querySelector('.dialog');
 var dialogClose = document.querySelector('.dialog__close');
@@ -15,8 +15,10 @@ var ENTER_KEY = 13;
 
 // удаляем активные классы у меток
 var removeActive = function () {
-  for (var j = 0; j < pin.length; j++) {
-    pin[j].classList.remove('pin--active');
+  var pinActive = document.querySelector('.pin--active');
+
+  if (pinActive) {
+    pinActive.classList.remove('pin--active');
   }
 };
 
@@ -26,11 +28,23 @@ var closeDialog = function () {
   dialogClose.setAttribute('aria-pressed', true);
 };
 
+var clickLegacy = function () {
+  var target = event.target;
+
+  while (target !== pinMap) {
+    if (target.className === 'pin') {
+      target.classList.add('pin--active');
+    }
+    target = target.parentNode;
+  }
+};
+
 // обработчик события по клику на пин
 var togglePin = function (event) {
   removeActive();
-  event.currentTarget.classList.add('pin--active');
+  clickLegacy();
   dialogWindow.style.display = 'block';
+  dialogClose.setAttribute('aria-pressed', false);
 };
 
 var isActivateEvent = function (event) {
@@ -58,6 +72,7 @@ dialogClose.addEventListener('click', function () {
 dialogClose.addEventListener('keydown', function (event) {
   if (isActivateEvent(event)) {
     closeDialog();
+    event.target.setAttribute('aria-pressed', true);
   }
 });
 
